@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EM · Movimiento, Salud y Bienestar — Kine & Bienestar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============ RESET & BASE ============ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        font-weight: 300;
+        color: #2b2b2b;
+        background: #faf7f2;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ============ PALETTE ============ */
+      :root {
+        --cream: #faf7f2;
+        --bone: #f2ede4;
+        --beige: #e8dfd1;
+        --sand: #d4c4a8;
+        --dark: #1a1a1a;
+        --charcoal: #2b2b2b;
+        --silver: #b8b8b8;
+        --silver-bright: #d8d8d8;
+      }
+
+      /* ============ TYPOGRAPHY ============ */
+      .serif {
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+      }
+      .sans {
+        font-family: "Inter", sans-serif;
+        font-weight: 300;
+      }
+
+      /* ============ DIAMOND SEPARATOR ============ */
+      .diamond-sep {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2rem;
+        margin: 2rem 0;
+      }
+      .diamond-sep::before,
+      .diamond-sep::after {
+        content: "";
+        width: 60px;
+        height: 1px;
+        background: var(--silver);
+      }
+      .diamond-sep span {
+        width: 8px;
+        height: 8px;
+        background: var(--silver);
+        transform: rotate(45deg);
+        display: inline-block;
+      }
+
+      /* ============ NAV ============ */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 1.5rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(26, 26, 26, 0.95);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+      }
+      nav .logo-text {
+        font-family: "Playfair Display", serif;
+        color: var(--silver-bright);
+        font-size: 1.1rem;
+        letter-spacing: 0.2em;
+      }
+      nav ul {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+      nav ul a {
+        color: var(--silver-bright);
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-weight: 300;
+        transition: color 0.3s;
+      }
+      nav ul a:hover {
+        color: #fff;
+      }
+      nav .nav-cta {
+        border: 1px solid var(--silver);
+        padding: 0.6rem 1.4rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--silver-bright);
+        transition: all 0.3s;
+      }
+      nav .nav-cta:hover {
+        background: var(--silver-bright);
+        color: var(--dark);
+      }
+
+      /* ============ HERO ============ */
+      .hero {
+        min-height: 100vh;
+        background: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6rem 2rem 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(180, 180, 180, 0.08) 0%,
+          transparent 70%
+        );
+      }
+      .hero-logo {
+        width: 220px;
+        margin-bottom: 2rem;
+        filter: drop-shadow(0 0 30px rgba(200, 200, 200, 0.15));
+        animation: fadeIn 1.5s ease;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        color: var(--silver-bright);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.5rem;
+        animation: fadeUp 1.5s ease 0.3s both;
+      }
+      .hero .tagline {
+        font-family: "Inter", sans-serif;
+        color: var(--silver);
+        font-size: 0.9rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        animation: fadeUp 1.5s ease 0.6s both;
+      }
+      .hero .subtitle {
+        color: var(--silver);
+        font-size: 1rem;
+        max-width: 500px;
+        margin: 0 auto 2.5rem;
+        font-weight: 300;
+        line-height: 1.8;
+        animation: fadeUp 1.5s ease 0.9s both;
+      }
+      .hero .cta-btn {
+        display: inline-block;
+        border: 1px solid var(--silver-bright);
+        color: var(--silver-bright);
+        padding: 1rem 2.5rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-weight: 300;
+        transition: all 0.4s ease;
+        animation: fadeUp 1.5s ease 1.2s both;
+      }
+      .hero .cta-btn:hover {
+        background: var(--silver-bright);
+        color: var(--dark);
+      }
+      .hero-scroll {
+        position: absolute;
+        bottom: 2rem;
+        color: var(--silver);
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(10px);
+        }
+      }
+
+      /* ============ SECTIONS GENERAL ============ */
+      section {
+        padding: 7rem 2rem;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 0.75rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--sand);
+        text-align: center;
+        margin-bottom: 1rem;
+        font-weight: 400;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 400;
+        text-align: center;
+        color: var(--charcoal);
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.02em;
+      }
+      .section-subtitle {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 4rem;
+        color: #6b6b6b;
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+
+      /* ============ ABOUT ============ */
+      .about {
+        background: var(--cream);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      .about-img {
+        aspect-ratio: 4/5;
+        background: url("https://image.pollinations.ai/prompt/elegant%20boutique%20wellness%20studio%20interior%20cream%20walls%20massage%20table%20plants%20natural%20light%20minimalist?width=800&height=1000&nologo=true")
+          center/cover;
+        border-radius: 2px;
+      }
+      .about-text h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: var(--charcoal);
+        margin-bottom: 2rem;
+        line-height: 1.2;
+      }
+      .about-text p {
+        color: #555;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+        line-height: 1.9;
+      }
+      .about-text .signature {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        color: var(--sand);
+        margin-top: 2rem;
+        font-size: 1.1rem;
+      }
+
+      /* ============ SERVICES ============ */
+      .services {
+        background: var(--bone);
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+        border-top: 1px solid var(--beige);
+      }
+      .service-item {
+        padding: 3rem 2.5rem;
+        border-bottom: 1px solid var(--beige);
+        border-right: 1px solid var(--beige);
+        transition: all 0.4s ease;
+        position: relative;
+      }
+      .service-item:nth-child(even) {
+        border-right: none;
+      }
+      .service-item:hover {
+        background: #fff;
+      }
+      .service-item .diamond {
+        width: 6px;
+        height: 6px;
+        background: var(--silver);
+        transform: rotate(45deg);
+        margin-bottom: 1.5rem;
+        display: inline-block;
+      }
+      .service-item h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: var(--charcoal);
+        margin-bottom: 0.8rem;
+      }
+      .service-item p {
+        color: #777;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      /* ============ TWO PILLARS ============ */
+      .pillars {
+        background: var(--cream);
+        padding: 0;
+      }
+      .pillar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 600px;
+      }
+      .pillar-img {
+        background-size: cover;
+        background-position: center;
+        min-height: 500px;
+      }
+      .pillar-img.physical {
+        background-image: url("https://image.pollinations.ai/prompt/woman%20doing%20gentle%20stretching%20in%20bright%20minimalist%20studio%20cream%20beige%20walls%20natural%20light%20wooden%20floors%20massage%20table%20editorial%20photography?width=1000&height=800&nologo=true");
+      }
+      .pillar-img.wellness {
+        background-image: url("https://image.pollinations.ai/prompt/woman%20meditating%20lotus%20position%20cream%20linen%20clothes%20warm%20room%20plants%20natural%20light%20serene%20boutique%20wellness?width=1000&height=800&nologo=true");
+      }
+      .pillar-content {
+        padding: 6rem 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .pillar:nth-child(2) .pillar-content {
+        background: var(--bone);
+      }
+      .pillar:nth-child(1) .pillar-content {
+        background: var(--cream);
+      }
+      .pillar-content .label {
+        font-size: 0.75rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 1.5rem;
+      }
+      .pillar-content h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        font-weight: 400;
+        color: var(--charcoal);
+        margin-bottom: 2rem;
+        line-height: 1.15;
+      }
+      .pillar-content p {
+        color: #666;
+        font-size: 1.05rem;
+        line-height: 1.9;
+        max-width: 450px;
+      }
+
+      /* ============ TEAM ============ */
+      .team {
+        background: var(--bone);
+      }
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+      .team-member {
+        text-align: center;
+      }
+      .team-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        background: var(--beige);
+        overflow: hidden;
+        border: 3px solid #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        color: var(--sand);
+      }
+      .team-member h4 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--charcoal);
+        margin-bottom: 0.4rem;
+      }
+      .team-member .role {
+        font-size: 0.85rem;
+        color: var(--sand);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      /* ============ SCHEDULE ============ */
+      .schedule {
+        background: var(--cream);
+      }
+      .schedule-wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 3rem 0;
+        background: #fff;
+      }
+      .schedule-table th,
+      .schedule-table td {
+        padding: 1.2rem 1.5rem;
+        text-align: left;
+        border-bottom: 1px solid var(--beige);
+      }
+      .schedule-table th {
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        color: var(--charcoal);
+        font-size: 1rem;
+        background: var(--bone);
+      }
+      .schedule-table td {
+        color: #666;
+        font-size: 0.95rem;
+      }
+      .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: var(--charcoal);
+        color: #fff;
+        padding: 1.1rem 2.5rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        font-weight: 300;
+        transition: all 0.3s;
+        margin-top: 1rem;
+      }
+      .whatsapp-btn:hover {
+        background: #000;
+        transform: translateY(-2px);
+      }
+      .whatsapp-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* ============ TESTIMONIALS ============ */
+      .testimonials {
+        background: var(--bone);
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .testimonial {
+        background: #fff;
+        padding: 3rem 2.5rem;
+        position: relative;
+        border: 1px solid var(--beige);
+      }
+      .testimonial .quote-mark {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        color: var(--sand);
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+      .testimonial p {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+      .testimonial .author {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--sand);
+        font-weight: 400;
+      }
+
+      /* ============ FOOTER ============ */
+      footer {
+        background: var(--dark);
+        color: var(--silver);
+        padding: 6rem 2rem 2rem;
+      }
+      .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 4rem;
+      }
+      .footer-col h4 {
+        font-family: "Playfair Display", serif;
+        color: var(--silver-bright);
+        font-size: 1.3rem;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+      }
+      .footer-col p,
+      .footer-col a {
+        color: var(--silver);
+        font-size: 0.95rem;
+        line-height: 2;
+        display: block;
+        transition: color 0.3s;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-map {
+        width: 100%;
+        height: 200px;
+        background: #2a2a2a;
+        border: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--silver);
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-top: 2rem;
+        border-top: 1px solid #333;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #666;
+        letter-spacing: 0.1em;
+      }
+
+      /* ============ SCROLL ANIMATIONS ============ */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ============ RESPONSIVE ============ */
+      @media (max-width: 900px) {
+        nav ul {
+          display: none;
+        }
+        .about-grid,
+        .pillar,
+        .team-grid,
+        .testimonials-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .service-item {
+          border-right: none !important;
+        }
+        .pillar-content {
+          padding: 4rem 2rem;
+        }
+        .pillar-img {
+          min-height: 350px;
+        }
+        section {
+          padding: 5rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ NAV ============ -->
+    <nav>
+      <div class="logo-text">EM · Kine & Bienestar</div>
+      <ul>
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#pillars">Enfoque</a></li>
+        <li><a href="#team">Equipo</a></li>
+        <li><a href="#schedule">Turnos</a></li>
+      </ul>
+      <a href="#schedule" class="nav-cta">Reservar</a>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <img src="./assets/logo.png" alt="EM Logo" class="hero-logo" />
+      <h1>Movimiento, Salud y Bienestar</h1>
+      <div class="tagline">Kine & Bienestar</div>
+      <p class="subtitle">
+        Un espacio pensado para cuidar el cuerpo, la mente y los vínculos, en
+        todas las etapas de la vida.
+      </p>
+      <a href="#schedule" class="cta-btn">Reservar turno</a>
+      <div class="hero-scroll">Scroll ↓</div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-img reveal"></div>
+          <div class="about-text reveal">
+            <div class="section-label" style="text-align: left">
+              Nuestro enfoque
+            </div>
+            <h2>Un lugar donde el cuidado se siente humano.</h2>
+            <p>
+              En EM entendemos el bienestar de manera integral. Combinamos
+              kinesiología y rehabilitación física con espacios de bienestar
+              emocional, estimulación y desarrollo social, para acompañar a cada
+              persona según el momento de vida que esté atravesando.
+            </p>
+            <p>
+              Trabajamos con niños, adultos y adultos mayores, desde la
+              recuperación de una lesión hasta el acompañamiento educativo y
+              social, siempre con un trato cercano, profesional y humano.
+            </p>
+            <div class="signature">— Equipo EM</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-label reveal">Lo que ofrecemos</div>
+        <h2 class="section-title reveal">Nuestros servicios</h2>
+        <p class="section-subtitle reveal">
+          Un abordaje completo para cada etapa y necesidad
+        </p>
+        <div class="diamond-sep reveal"><span></span></div>
+
+        <div class="services-grid">
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Neurología infantil</h3>
+            <p>Evaluación y tratamiento de trastornos neurológicos en niños.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Traumatología</h3>
+            <p>Evaluación y tratamiento de lesiones osteoarticulares.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Psiquiatría</h3>
+            <p>
+              Atención especializada en salud mental y trastornos psicológicos.
+            </p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Psicología</h3>
+            <p>
+              Atención especializada en salud mental y trastornos psicológicos.
+            </p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Psicopedagogía</h3>
+            <p>Evaluación y apoyo en el desarrollo académico y cognitivo.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Rehabilitación kinesiológica</h3>
+            <p>Recuperación funcional personalizada.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Barra de Access</h3>
+            <p>Terapia alternativa para liberar el estrés.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Ejercicios para adultos mayores</h3>
+            <p>
+              Rutinas de movimiento adaptadas para mantener autonomía y
+              vitalidad.
+            </p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Taller psico-cognitivo</h3>
+            <p>
+              Estimulación cognitiva y contención grupal para adultos mayores.
+            </p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Psicomotricidad</h3>
+            <p>
+              Desarrollo del movimiento y la coordinación en la primera
+              infancia.
+            </p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Estimulación temprana</h3>
+            <p>Acompañamiento del desarrollo en los primeros años de vida.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Masajes</h3>
+            <p>Relajación y alivio de tensiones musculares.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Yoga</h3>
+            <p>Práctica de conexión entre cuerpo y mente.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Reiki</h3>
+            <p>Terapia energética para el equilibrio y la relajación.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Taller de habilidades sociales</h3>
+            <p>Espacio de desarrollo de vínculos y comunicación.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Alfabetización</h3>
+            <p>Acompañamiento en el proceso de lectoescritura.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Ayuda escolar</h3>
+            <p>Apoyo pedagógico para chicos en edad escolar.</p>
+          </div>
+          <div class="service-item reveal">
+            <span class="diamond"></span>
+            <h3>Gimnasia para adultos mayores</h3>
+            <p>Actividad física adaptada para la población de edad avanzada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TWO PILLARS ============ -->
+    <section class="pillars" id="pillars">
+      <div class="pillar">
+        <div class="pillar-img physical"></div>
+        <div class="pillar-content reveal">
+          <div class="label">Eje 01</div>
+          <h2>Cuerpo en movimiento</h2>
+          <p>
+            Tratamos lesiones, acompañamos rehabilitaciones y trabajamos la
+            actividad física con un enfoque profesional, adaptado a cada
+            paciente y cada objetivo.
+          </p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-content reveal">
+          <div class="label">Eje 02</div>
+          <h2>Mente y vínculos</h2>
+          <p>
+            Sumamos espacios de yoga, reiki, talleres y acompañamiento escolar,
+            porque el bienestar también se construye desde lo emocional, lo
+            social y lo educativo.
+          </p>
+        </div>
+        <div class="pillar-img wellness"></div>
+      </div>
+    </section>
+
+    <!-- ============ TEAM ============ -->
+    <section class="team" id="team">
+      <div class="container">
+        <div class="section-label reveal">Profesionales</div>
+        <h2 class="section-title reveal">Quiénes te acompañan</h2>
+        <p class="section-subtitle reveal">
+          Un equipo de profesionales comprometidos con tu bienestar y el de tu
+          familia.
+        </p>
+        <div class="diamond-sep reveal"><span></span></div>
+
+        <div class="team-grid">
+          <div class="team-member reveal">
+            <div class="team-photo">EM</div>
+            <h4>Profesional 1</h4>
+            <div class="role">Kinesiología</div>
+          </div>
+          <div class="team-member reveal">
+            <div class="team-photo">EM</div>
+            <h4>Profesional 2</h4>
+            <div class="role">Traumatología</div>
+          </div>
+          <div class="team-member reveal">
+            <div class="team-photo">EM</div>
+            <h4>Profesional 3</h4>
+            <div class="role">Yoga & Reiki</div>
+          </div>
+          <div class="team-member reveal">
+            <div class="team-photo">EM</div>
+            <h4>Profesional 4</h4>
+            <div class="role">Psicomotricidad</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCHEDULE ============ -->
+    <section class="schedule" id="schedule">
+      <div class="schedule-wrapper">
+        <div class="section-label reveal">Turnos</div>
+        <h2 class="section-title reveal">Reservá tu turno</h2>
+        <p class="section-subtitle reveal">
+          Coordinamos los horarios según cada servicio y profesional. Escribinos
+          y te ayudamos a encontrar el turno que mejor se adapte a vos.
+        </p>
+        <div class="diamond-sep reveal"><span></span></div>
+
+        <table class="schedule-table reveal">
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Horario</th>
+              <th>Servicios</th>
+              <th>Profesional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Martes y Jueves</td>
+              <td>09:00 — 12:00</td>
+              <td>Alfabetización · Apoyo Escolar</td>
+              <td>Leticia</td>
+            </tr>
+            <tr>
+              <td>Martes y Jueves</td>
+              <td>09:00 — 12:00</td>
+              <td>Yoga</td>
+              <td>Romina</td>
+            </tr>
+            <tr>
+              <td>Jueves</td>
+              <td>17:00 — 19:00</td>
+              <td>Habilidades Sociales</td>
+              <td>Juanjo</td>
+            </tr>
+            <tr>
+              <td>Viernes</td>
+              <td>09:00 — 19:00</td>
+              <td>Masajes · Reflexología</td>
+              <td>Mercedes</td>
+            </tr>
+            <tr>
+              <td>Sábados</td>
+              <td>13:00 — 15:00</td>
+              <td>Psicopedagogía</td>
+              <td>Lic. Micaela Acevedo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <a
+          href="https://wa.me/5491168443582?text=Hola!%20Quiero%20reservar%20un%20turno%20en%20EM%20·%20Movimiento,%20Salud%20y%20Bienestar"
+          class="whatsapp-btn reveal"
+          target="_blank"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+            />
+          </svg>
+          Reservar por WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-label reveal">Testimonios</div>
+        <h2 class="section-title reveal">Lo que dicen quienes nos eligen</h2>
+        <div class="diamond-sep reveal"><span></span></div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial reveal">
+            <div class="quote-mark">"</div>
+            <p>
+              Empecé rehabilitación después de una lesión y el acompañamiento
+              fue excelente en todo el proceso.
+            </p>
+            <div class="author">— Paciente de Traumatología</div>
+          </div>
+          <div class="testimonial reveal">
+            <div class="quote-mark">"</div>
+            <p>
+              El taller para adultos mayores le devolvió las ganas de salir de
+              casa a mi mamá.
+            </p>
+            <div class="author">— Familiar de paciente</div>
+          </div>
+          <div class="testimonial reveal">
+            <div class="quote-mark">"</div>
+            <p>
+              Un lugar cálido, donde te sentís escuchado desde el primer día.
+            </p>
+            <div class="author">— Paciente de Yoga</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Visitanos</h4>
+          <p>Dirección: José Pacifico Otero 401</p>
+          <p>
+            Teléfono / WhatsApp:<br />
+            <a
+              href="https://wa.me/5491168443582?text=Hola!%20Quiero%20reservar%20un%20turno%20en%20EM%20·%20Movimiento,%20Salud%20y%20Bienestar"
+              target="_blank"
+            >
+              11 6844-3582
+            </a>
+          </p>
+          <p>
+            Instagram:<br /><a
+              href="https://www.instagram.com/elizabethmazakine/"
+              target="_blank "
+              >@elizabethmazakine</a
+            >
+          </p>
+          <p>Horario de atención:<br />Lunes a Viernes: 9:00 - 20:00</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="#about">Sobre nosotros</a>
+          <a href="#services">Servicios</a>
+          <a href="#team">Equipo</a>
+          <a href="#schedule">Reservar turno</a>
+        </div>
+        <div class="footer-col">
+          <h4>Ubicación</h4>
+          <iframe
+            src="https://www.google.com/maps?q=José+Pacífico+Otero+401&output=embed"
+            width="100%"
+            height="220"
+            style="
+              border: 0;
+              border-radius: 2px;
+              filter: grayscale(100%) invert(92%) contrast(83%);
+            "
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+          <p style="margin-top: 1rem; text-align: center">
+            <a
+              href="https://maps.app.goo.gl/uQszjiDg7FtCoCvW8"
+              target="_blank"
+              style="
+                font-size: 0.75rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+              "
+            >
+              Ver en Google Maps →
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 EM · Movimiento, Salud y Bienestar. Todos los derechos
+        reservados.
+      </div>
+    </footer>
+
+    <!-- ============ SCROLL REVEAL SCRIPT ============ -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
