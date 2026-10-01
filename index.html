@@ -656,6 +656,105 @@
           display: none !important;
         }
       }
+      /* ============ CORRECCIÓN SCROLL HORIZONTAL Y BOTÓN ============ */
+
+      /* 1. Bloquear el desbordamiento a nivel raíz sin ser agresivos */
+      html,
+      body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      /* 2. Red de seguridad SOLO para elementos multimedia (NO afecta a los divs de fotos) */
+      img,
+      video,
+      iframe,
+      .hero-logo {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      /* 3. Ajustes específicos para móviles */
+      @media (max-width: 768px) {
+        /* A. EL CONTENEDOR DE LA TABLA: Este sí permite scroll */
+        .table-scroll-container {
+          overflow-x: auto !important;
+          -webkit-overflow-scrolling: touch;
+          width: 100% !important;
+          margin: 2rem 0;
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 5%,
+            black 95%,
+            transparent
+          );
+          mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 5%,
+            black 95%,
+            transparent
+          );
+        }
+
+        /* B. LA TABLA: Forzamos un ancho mínimo */
+        .schedule-table {
+          min-width: 650px !important;
+          width: 100% !important;
+          margin: 0 !important;
+          display: table !important;
+        }
+
+        /* C. BOTÓN DE WHATSAPP: Centrado perfecto */
+        .whatsapp-btn {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: center !important;
+          width: 100% !important;
+          max-width: 320px !important;
+          margin: 2rem auto 0 !important;
+          padding: 1rem 1.5rem !important;
+          font-size: 0.75rem !important;
+          letter-spacing: 0.15em !important;
+          text-align: center !important;
+        }
+
+        .whatsapp-btn svg {
+          flex-shrink: 0;
+        }
+
+        /* D. FOTOS DEL EQUIPO: Círculos perfectos en móvil */
+        .team-photo {
+          width: 150px !important; /* Un poco más chico para móvil */
+          height: 150px !important; /* MISMO valor que el width para que sea círculo */
+          border-radius: 50% !important;
+          flex-shrink: 0 !important; /* Evita que se aplaste */
+          margin: 0 auto 1rem !important;
+        }
+
+        /* E. NAV: Limpio y centrado */
+        nav {
+          width: 100% !important;
+          left: 0 !important;
+          right: 0 !important;
+          justify-content: center !important;
+          padding: 1rem !important;
+        }
+
+        nav .nav-cta {
+          display: none !important;
+        }
+
+        /* F. HERO: Ajuste de padding */
+        .hero {
+          width: 100% !important;
+          padding: 5rem 1.5rem 3rem !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -903,49 +1002,50 @@
           y te ayudamos a encontrar el turno que mejor se adapte a vos.
         </p>
         <div class="diamond-sep reveal"><span></span></div>
-
-        <table class="schedule-table reveal">
-          <thead>
-            <tr>
-              <th>Día</th>
-              <th>Horario</th>
-              <th>Servicios</th>
-              <th>Profesional</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Martes y Jueves</td>
-              <td>09:00 — 12:00</td>
-              <td>Alfabetización · Apoyo Escolar</td>
-              <td>Leticia</td>
-            </tr>
-            <tr>
-              <td>Martes y Jueves</td>
-              <td>09:00 — 12:00</td>
-              <td>Yoga</td>
-              <td>Romina</td>
-            </tr>
-            <tr>
-              <td>Jueves</td>
-              <td>17:00 — 19:00</td>
-              <td>Habilidades Sociales</td>
-              <td>Juanjo</td>
-            </tr>
-            <tr>
-              <td>Viernes</td>
-              <td>09:00 — 19:00</td>
-              <td>Masajes · Reflexología</td>
-              <td>Mercedes</td>
-            </tr>
-            <tr>
-              <td>Sábados</td>
-              <td>13:00 — 15:00</td>
-              <td>Psicopedagogía</td>
-              <td>Lic. Micaela Acevedo</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-scroll-container">
+          <table class="schedule-table reveal">
+            <thead>
+              <tr>
+                <th>Día</th>
+                <th>Horario</th>
+                <th>Servicios</th>
+                <th>Profesional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Martes y Jueves</td>
+                <td>09:00 — 12:00</td>
+                <td>Alfabetización · Apoyo Escolar</td>
+                <td>Leticia</td>
+              </tr>
+              <tr>
+                <td>Martes y Jueves</td>
+                <td>09:00 — 12:00</td>
+                <td>Yoga</td>
+                <td>Romina</td>
+              </tr>
+              <tr>
+                <td>Jueves</td>
+                <td>17:00 — 19:00</td>
+                <td>Habilidades Sociales</td>
+                <td>Juanjo</td>
+              </tr>
+              <tr>
+                <td>Viernes</td>
+                <td>09:00 — 19:00</td>
+                <td>Masajes · Reflexología</td>
+                <td>Mercedes</td>
+              </tr>
+              <tr>
+                <td>Sábados</td>
+                <td>13:00 — 15:00</td>
+                <td>Psicopedagogía</td>
+                <td>Lic. Micaela Acevedo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <a
           href="https://wa.me/5491168443582?text=Hola!%20Quiero%20reservar%20un%20turno%20en%20EM%20·%20Movimiento,%20Salud%20y%20Bienestar"
