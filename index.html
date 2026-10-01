@@ -456,7 +456,7 @@
         margin-bottom: 0.4rem;
       }
       .team-member .role {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         color: var(--sand);
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -554,6 +554,93 @@
         text-transform: uppercase;
         color: var(--sand);
         font-weight: 400;
+      }
+      /* ============ CONTACTO ============ */
+      .contact {
+        background: var(--bone);
+      }
+
+      .contact-form {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 3rem;
+        border: 1px solid var(--beige);
+        border-radius: 2px;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group.full-width {
+        grid-column: 1 / -1;
+        margin-bottom: 2rem;
+      }
+
+      .contact-form label {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--charcoal);
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+      }
+
+      .contact-form input,
+      .contact-form select,
+      .contact-form textarea {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+        color: var(--charcoal);
+        background: var(--cream);
+        border: 1px solid var(--beige);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .contact-form input:focus,
+      .contact-form select:focus,
+      .contact-form textarea:focus {
+        border-color: var(--charcoal);
+        background: #fff;
+      }
+
+      .contact-form textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .form-submit {
+        text-align: center;
+      }
+
+      /* Ocultar campo honeypot (anti-spam) */
+      .hidden {
+        display: none !important;
+      }
+
+      /* Responsive del formulario */
+      @media (max-width: 768px) {
+        .contact-form {
+          padding: 2rem 1.5rem;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr; /* Una sola columna en móvil */
+          gap: 1.2rem;
+        }
       }
 
       /* ============ FOOTER ============ */
@@ -1106,6 +1193,121 @@
         </div>
       </div>
     </section>
+    <!-- ============ CONTACTO ============ -->
+    <section class="contact" id="contacto">
+      <div class="container">
+        <div class="section-label reveal">Contacto</div>
+        <h2 class="section-title reveal">Reservá tu turno o consultanos</h2>
+        <p class="section-subtitle reveal">
+          Completá el formulario y nos pondremos en contacto a la brevedad para
+          coordinar tu espacio.
+        </p>
+        <div class="diamond-sep reveal"><span></span></div>
+
+        <!-- Formulario con atributos de Netlify -->
+        <form
+          class="contact-form reveal"
+          name="contacto-em"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <!-- Campo oculto anti-spam (Netlify lo usa para filtrar bots) -->
+          <p class="hidden">
+            <label
+              >No llenar esto si sos humano: <input name="bot-field"
+            /></label>
+          </p>
+
+          <!-- Campo oculto que le dice a Netlify el nombre del formulario -->
+          <input type="hidden" name="form-name" value="contacto-em" />
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+                placeholder="Tu nombre"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp</label>
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                required
+                placeholder="11 1234-5678"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="tu@email.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="servicio">Servicio de interés</label>
+              <select id="servicio" name="servicio" required>
+                <option value="" disabled selected>
+                  Seleccioná una opción
+                </option>
+                <option value="Kinesiología / Rehabilitación">
+                  Kinesiología / Rehabilitación
+                </option>
+                <option value="Psicología / Psiquiatría">
+                  Psicología / Psiquiatría
+                </option>
+                <option value="Psicopedagogía / Ayuda escolar">
+                  Psicopedagogía / Ayuda escolar
+                </option>
+                <option value="Yoga / Reiki / Masajes">
+                  Yoga / Reiki / Masajes
+                </option>
+                <option value="Adultos mayores">Adultos mayores</option>
+                <option value="Otra consulta">Otra consulta</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="mensaje">Mensaje o consulta</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="4"
+              required
+              placeholder="Contanos brevemente qué necesitás o qué día/horario te queda cómodo..."
+            ></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button
+              type="submit"
+              class="whatsapp-btn"
+              style="
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                max-width: 350px;
+              "
+            >
+              Enviar consulta
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
 
     <!-- ============ FOOTER ============ -->
     <footer>
@@ -1141,6 +1343,7 @@
             target="_blank"
             >Reservar turno</a
           >
+          <a href="#contacto">Contacto</a>
         </div>
         <div class="footer-col">
           <h4>Ubicación</h4>
