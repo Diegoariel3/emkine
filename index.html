@@ -1604,24 +1604,7 @@
       </div>
     </footer>
 
-    <!-- ============ SCROLL REVEAL SCRIPT ============ -->
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.15 },
-      );
-
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => observer.observe(el));
-    </script>
-    <!-- ============ POPUP AGENDA ============ -->
+    <!-- ============ POPUP AGENDA HTML ============ -->
     <div id="popup-agenda" class="popup-overlay">
       <div class="popup-content">
         <button class="popup-close" aria-label="Cerrar">&times;</button>
@@ -1683,7 +1666,8 @@
         </a>
       </div>
     </div>
-        <!-- ============ SCROLL REVEAL SCRIPT ============ -->
+
+    <!-- ============ SCROLL REVEAL SCRIPT ============ -->
     <script>
       const observer = new IntersectionObserver(
         (entries) => {
@@ -1701,18 +1685,44 @@
         .forEach((el) => observer.observe(el));
     </script>
 
-    <!-- ============ POPUP AGENDA HTML ============ -->
-    <div id="popup-agenda" class="popup-overlay">
-      <!-- ... todo el HTML del popup que te pasé ... -->
-    </div>
-
     <!-- ============ POPUP LOGIC SCRIPT ============ -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // ... todo el código del popup con la fecha límite ...
+      document.addEventListener("DOMContentLoaded", function () {
+        const popup = document.getElementById("popup-agenda");
+        const closeBtn = popup.querySelector(".popup-close");
+
+        // Fecha límite: 20 de octubre de 2026 a las 23:59:59
+        const fechaLimite = new Date("2026-10-20T23:59:59");
+        const fechaActual = new Date();
+
+        const popupSeen = localStorage.getItem("popupAgendaSeen");
+        const fechaExpirada = fechaActual > fechaLimite;
+
+        if (!popupSeen && !fechaExpirada) {
+          setTimeout(() => {
+            popup.classList.add("active");
+          }, 1500);
+        }
+
+        closeBtn.addEventListener("click", function () {
+          popup.classList.remove("active");
+          localStorage.setItem("popupAgendaSeen", "true");
+        });
+
+        popup.addEventListener("click", function (e) {
+          if (e.target === popup) {
+            popup.classList.remove("active");
+            localStorage.setItem("popupAgendaSeen", "true");
+          }
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && popup.classList.contains("active")) {
+            popup.classList.remove("active");
+            localStorage.setItem("popupAgendaSeen", "true");
+          }
+        });
       });
     </script>
-  </body>
-</html>
   </body>
 </html>
