@@ -1057,3 +1057,19 @@ iframe,
     font-size: 1.5rem;
   }
 }
+@media (max-width: 900px) {
+  nav {
+    padding: 1.2rem 1.5rem !important;
+    justify-content: space-between !important;
+  }
+
+  nav .logo-text {
+    font-size: 1rem !important;
+    letter-spacing: 0.15em !important;
+  }
+
+  .menu-toggle {
+    padding: 8px !important;
+    margin-left: 1rem !important;
+  }
+}
