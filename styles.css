@@ -1182,3 +1182,9 @@ iframe,
     display: none;
   }
 }
+/* Checkbox de privacidad en formulario */
+.form-group input[type="checkbox"] {
+  width: auto !important;
+  margin-top: 0.3rem;
+  accent-color: var(--charcoal);
+}
