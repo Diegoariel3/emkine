@@ -281,8 +281,7 @@ section {
 }
 .about-img {
   aspect-ratio: 4/5;
-  background: url("https://image.pollinations.ai/prompt/elegant%20boutique%20wellness%20studio%20interior%20cream%20walls%20massage%20table%20plants%20natural%20light%20minimalist?width=800&height=1000&nologo=true")
-    center/cover;
+  background: url("./assets/recepcion.jfif") center/cover;
   border-radius: 2px;
 }
 .about-text h2 {
@@ -367,10 +366,10 @@ section {
   min-height: 500px;
 }
 .pillar-img.physical {
-  background-image: url("https://image.pollinations.ai/prompt/woman%20doing%20gentle%20stretching%20in%20bright%20minimalist%20studio%20cream%20beige%20walls%20natural%20light%20wooden%20floors%20massage%20table%20editorial%20photography?width=1000&height=800&nologo=true");
+  background-image: url("./assets/gimnasio.jfif");
 }
 .pillar-img.wellness {
-  background-image: url("https://image.pollinations.ai/prompt/woman%20meditating%20lotus%20position%20cream%20linen%20clothes%20warm%20room%20plants%20natural%20light%20serene%20boutique%20wellness?width=1000&height=800&nologo=true");
+  background-image: url("./assets/pediatrico.jpeg");
 }
 .pillar-content {
   padding: 6rem 5rem;
